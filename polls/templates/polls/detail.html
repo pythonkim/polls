@@ -1,0 +1,19 @@
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    {% if user.is_authenticated %}<!-- 로그인 하면 true 즉, 로그인한사람만 보여라 -->
+
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        {% endif %}
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+{% if user.is_authenticated %}
+<input type="submit" value="Vote">
+{% endif %}
+</form>
+<a href="{% url 'polls:results' question.id %}">결과보기</a>
+<a href="{% url 'polls:index' %}">메인으로</a>
