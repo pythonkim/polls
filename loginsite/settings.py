@@ -25,7 +25,7 @@ SECRET_KEY = '0#r&4!fyhmqj+=3rkh7je$zxcf9(@^g^od@__d=6!coyxdmwsd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL='user.User' #장고에서 User 모델을 인식하도록 하는것
 
